@@ -1,0 +1,580 @@
+:root {
+    /*** THEME ***/
+    --color1: rgb(38, 124, 222);
+    --color2: rgb(24, 78, 139);
+    --color3: rgb(176, 213, 255);
+
+    --stickNote-color: rgb(255, 237, 134);
+    --stickNote-task-title-color: rgb(228, 203, 61);
+    --stickyNote-task-content-color: rgba(228, 203, 61, 0.302);
+
+    --highPriorityBg: rgb(255, 100, 100);
+    --highPriorityBorder: rgb(173, 21, 21);
+    --mediumPriorityBg: rgb(150, 141, 45);
+    --mediumPriorityBorder: rgb(95, 89, 21);
+    --lowPriorityBg: rgb(51, 132, 67);
+    --lowPriorityBorder: rgb(14, 93, 30);
+
+}
+
+body {
+    display: grid;
+    grid-template-columns: 30px 180px 1fr;
+    grid-template-rows: 30px 140px 1fr;
+    height: 100vh;
+    font-family: 'Trebuchet MS', system-ui, apple-system, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: var(--color3);
+}
+
+body::after {
+    content: "";
+    background: url(../assets/images/corkbg_2.png) repeat;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+dialog {
+    position: absolute;
+    top:40%;
+    z-index: 4;
+}
+
+
+#header, #sidebar {
+    color: white;
+}
+
+#header {
+    background-color:var(--color1);
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    z-index: 1;
+}
+
+#header h1 {
+    font-family: Chekharda;
+    font-size: 90px;
+    transform: skew(-7deg);
+    padding: 20px 0 0px 70px;
+    letter-spacing: 4px;
+}
+
+#sidebar {
+    padding: 190px 0 0 0;
+    background-color:var(--color2);
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    z-index: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0px
+}
+
+#sidebar > * {
+    padding-left: 20px;
+}
+
+#sidebar h2 {
+    font-size:1.7em;
+    padding-bottom: 10px;
+}
+
+#sidebar .menuElement {
+    cursor: pointer;
+    font-size: larger;
+    transition: all 0.2s ease;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.formDiv {
+    outline: none;
+}
+
+form:focus {
+    outline: none;
+}
+
+svg {
+    height: 25px;
+}
+
+svg path {
+    fill: white;
+    transition: all 0.2s ease;
+}
+
+#sidebar .menuElement:hover svg path {
+    fill: var(--color2);
+}
+
+#sidebar .menuElement {
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+}
+
+#sidebar .menuElement span {
+    padding-top: 2px;
+    padding-left: 5px;
+}
+
+#sidebar .menuElement:hover {
+    background-color: var(--color3);
+    color: var(--color2);
+    font-weight: 900;
+}
+
+#main {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    overflow-y: scroll;
+
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(350px, 370px));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 370px));
+
+    overflow-y: scroll;
+}
+
+#addButton {
+    cursor: pointer;
+
+    font-family: Chekharda;
+
+    font-size: 50px;
+    text-align: center;
+
+    position: fixed;
+    left: calc(100vw - 120px);
+    top: calc(100vh - 120px);
+
+    padding: 5px 23px 10px 23px;
+
+    border: 2px solid white;
+    border-radius: 20px;
+
+    background-color:var(--color1);
+
+    color: white;
+    font-weight: 900;
+    line-height: 1.3;
+    transition: all 0.3s ease-out;
+
+    perspective: 500px;
+    z-index: 1;
+
+}
+
+#addButton:hover {
+
+    border: 2px solid var(--color2);
+
+    background-color:white;
+
+    color: var(--color2);
+    font-weight: 900;
+
+    transform: rotateZ(90deg) scale(1.08); 
+
+    perspective: 500px;
+
+
+}
+
+.addProjectButton, .addTaskButton {
+
+    z-index: 0;
+
+    cursor: pointer;
+
+    font-size: 20px;
+    text-align: center;
+
+    position: fixed;
+    left: calc(100vw - 102.5px);
+    top: calc(100vh - 102.5px);
+
+    padding: 8px 8px 2px 9px;
+
+    border: 3px solid white;
+    border-radius: 15px;
+
+    background-color:var(--color1);
+
+    color: white;
+    font-weight: 900;
+    line-height: 1.5;
+
+    transition: all 0.4s ease;
+
+    opacity: 0;
+}
+
+.showAddProject {
+    top: calc(100vh - 171.5px);
+    opacity: 1;
+}
+
+.showAddTask {
+    top: calc(100vh - 221.5px);
+    opacity: 1;
+}
+
+.showAddProject:hover path, .showAddTask:hover path {
+    fill: var(--color2)
+}
+
+.addProjectButton:hover, .addTaskButton:hover {
+
+    border: 3px solid var(--color2);
+
+    background-color:white;
+
+    color: var(--color2);
+    font-weight: 900;
+}
+
+.project {
+    border: none;
+    background-color: var(--stickNote-color);
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr;
+    margin: 10px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.428);
+
+}
+
+.projectTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+
+.projectTitle input.delete {
+    padding: 1.88px 5px;
+    margin: 1px;
+    font-weight: 900;
+    color: white;
+    background-color: var(--highPriorityBg);
+    border: 0.5px solid var(--highPriorityBorder);
+    border-radius: 5px;
+    cursor: pointer;
+    justify-self: right;
+}
+
+.projectTitle input.delete:hover {
+    background-color: rgb(221, 87, 87);
+}
+
+.projectTitle input.edit {
+    padding: 1.88px 5px;
+    margin: 1px;
+    font-weight: 900;
+    color: white;
+    background-color: var(--color3);
+    border: 0.5px solid var(--color2);
+    border-radius: 5px;
+    cursor: pointer;
+    justify-self: right;
+}
+
+.projectTitle input.edit:hover {
+    background-color: rgb(147, 193, 246);
+}
+
+.projectTitle span {
+    font-size: small;
+    max-width: 250px;
+
+}
+
+.project .projectTitle {
+    padding: 10px 10px 5px 10px;
+}
+
+.project > header > span {
+    font-size: small;
+}
+
+.content {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.task {
+    display: grid;
+    padding: 10px 5px 5px 10px;
+    max-height: 177px;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    grid-template-columns: 2.5fr 1fr;
+    grid-template-rows: 32px minmax(0,100px) 40px;
+    grid-template-areas:
+    "header header"
+    "description deadlines"
+    "button button";
+}
+
+.task.collapsed {
+    max-height: 27.2px; /* The height of the header or a minimal height */
+    overflow: hidden; /* Ensure content stays hidden when collapsed */
+    transition: max-height 0.4s ease;
+}
+
+.task.collapsed .description, 
+.task.collapsed .deadlines, 
+.task.collapsed .button {
+    transition: display 0.4s ease;
+}
+
+.task .description, 
+.task .deadlines, 
+.task .button {
+    background-color: var(--stickyNote-task-content-color);
+}
+
+.task header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: header;
+    padding-right: 5px;
+    background-color: var(--stickNote-task-title-color);
+    transition: background-color 0.2s ease;
+}
+
+.task header:hover {
+    background-color: rgb(208, 188, 71)
+}
+
+.task header > span {
+    padding: 3px 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.task header > h4 {
+    padding: 3px 10px;
+}
+
+.task header > .highPriority {
+    font-weight: 900;
+    color: var(--highPriorityBorder);
+    border: 2px solid var(--highPriorityBorder);
+    background-color: var(--highPriorityBg);
+}
+
+.task header > .mediumPriority {
+    font-weight: 900;
+    color: var(--mediumPriorityBorder);
+    border: 2px solid var(--mediumPriorityBorder);
+    background-color: var(--mediumPriorityBg);
+}
+
+.task header > .lowPriority {
+    font-weight: 900;
+    color: var(--lowPriorityBorder);
+    border: 2px solid var(--lowPriorityBorder);
+    background-color: var(--lowPriorityBg);
+}
+
+.task .description {
+    grid-area: description;
+    font-size: small;
+    padding: 0 7px 7px 7px;
+    overflow:scroll;
+    scrollbar-width: thin;
+}
+
+.task .deadlines {
+    grid-area: deadlines;
+    font-size: small;
+    padding: 0 5px;
+
+}
+
+.task .button {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    grid-area: button;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.button input {
+    padding: 3px 4px;
+}
+
+p.expired {
+    color: red;
+}
+
+.button input[type="button"] {
+
+}
+
+.task label {padding-left: 7px;}
+
+ul {
+    list-style: none;
+    padding: none;
+}
+label {
+    line-height: 1.5;
+  }
+
+dialog {
+    z-index: 4;
+    padding: 0;
+    border-radius: 6px;
+    max-height: 600px;
+    overflow-x: hidden;
+}
+
+dialog * {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+}
+
+dialog form {
+    display: grid;
+    grid-template-rows: 40px 1fr 30px;
+    grid-template-columns: 1fr;
+
+}
+
+dialog form > div {
+    padding: 10px 10px 0px 10px;
+}
+
+dialog .formTitleDiv {
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: var(--color2);
+    color: white;
+}
+
+dialog .formDiv {
+    overflow: scroll;
+}
+
+
+input {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+dialog input[type="text"], input[type="date"],  select, textarea {
+    width: 300px;
+    transition: background-color 0.3s ease;
+    border: 1px solid  #ccc;
+}
+
+dialog textarea {
+    width: 300px;
+    transition: background-color 0.3s ease;
+}
+
+dialog input[type="text"]:hover, input[type="date"]:hover, dialog textarea:hover, select.hover {
+    width: 300px;
+    background-color: rgb(232, 243, 255);
+    transition: background-color 0.3s ease;
+
+}
+
+*:focus {outline: none;}
+
+
+.selectProject {
+    margin-top: 10px;
+    align-self: center;
+    appearance: none;
+    width: fit-content;
+    border-top :none;
+    border-left :none;
+    border-right :none;
+    width: calc(100% + 10px);
+}
+
+.selectProject:focus {
+    outline: none;
+}
+
+.selectProject option {
+    font-style: italic;
+    font-weight: 100;
+    background-color: inherit;
+    width: 100%;
+    padding:4px 20px;
+}
+
+.selectProject option:checked {
+    font-style: normal;
+    font-weight: 900;
+    background-color: var(--color1);
+    width: 100%;
+}
+
+.selectProject option:focus {
+    font-weight: 900;
+    background-color: var(--color1);
+    width: 100%;
+}
+
+fieldset {
+    border: 1px solid #ccc; /* Light border */
+    padding: 15px;          /* Padding inside the fieldset */
+    margin-bottom: 20px;    /* Space between fieldsets */
+    border-radius: 5px;     /* Rounded corners */
+    background-color: #f9f9f9; /* Slight background color for distinction */
+}
+
+/* Styling for the legend */
+legend {
+    display: inline;
+    font-size: small;
+    font-weight: bold;      /* Bold text */
+    padding: 0 10px;        /* Space around the text */
+    color: #333;            /* Darker text color */
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+legend span {
+    display: inline;
+}
+
+.formDiv label {
+    margin-top: 10px;
+    font-variant: small-caps;
+    font-size: 15px;
+}
+
+/* Remove default padding/margin for input elements inside fieldset */
+fieldset input,
+fieldset select,
+fieldset textarea {
+    margin-bottom: 10px;         /* Margin around inputs */
+    display: block;         /* Each element on a new line */
+    width: 100%;            /* Full width for inputs */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}

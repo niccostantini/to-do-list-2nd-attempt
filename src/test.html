@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../styles/normalize.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/fonts.scss">
+    <script src="./projects.js" defer></script>
+</head>
+<body>
+    <div id="header">
+        <h1>KiP</h1>
+    </div>
+
+    <div id="sidebar">
+        <h2>Menu</h2>
+        <div class="menuElement">Projects</div>
+        <div class="menuElement">Tasks</div>
+        <div class="menuElement">Theme</div>
+        <div class="menuElement">Credits</div>
+    </div>
+
+    <div id="main">
+
+        <div class="project"><header class="projectTitle"><h3>Website Redesign</h3><span>Redesign the company website</span></header><section class="content"><div class="task" id="task1-1"><header class="task-header"><h4>Create wireframes</h4><span class="highPriority">HIGH</span></header><div class="description"><p>Wireframes for the new design</p><div class="checkBox"><input type="checkbox" id="item1-1-1"><label for="item1-1-1">Sketch homepage</label></div><div class="checkBox"><input type="checkbox" id="item1-1-2"><label for="item1-1-2">Sketch contact page</label></div></div><div class="deadlines"><p>Due: 2024-09-10</p><p></p></div><div class="button"><input type="button" value="Edit" class="edit"><input type="button" value="Delete" class="delete"></div></div><div class="task" id="task1-2"><header class="task-header"><h4>Develop frontend</h4><span class="mediumPriority">MEDIUM</span></header><div class="description"><p>Develop the frontend using React</p><div class="checkBox"><input type="checkbox" id="item1-2-1"><label for="item1-2-1">HTML/CSS</label></div><div class="checkBox"><input type="checkbox" id="item1-2-2"><label for="item1-2-2">JavaScript</label></div></div><div class="deadlines"><p>Due: 2024-10-01</p><p></p></div><div class="button"><input type="button" value="Edit" class="edit"><input type="button" value="Delete" class="delete"></div></div></section></div>
+
+    </div>
+
+    <div id="addButton"><span id="plus">+</span></div>
+
+    <div class="addProjectButton"><span id="addProject">P</span></div>
+    <dialog id="addProjectDialog">
+        <form name="addProjectForm" open>
+            <ul>
+                <li><label>Project Title</label> <input type="text" placeholder="Project Title" name="projectTitle"></li>
+                <li><label>Project Description</label> <input type="text" placeholder="Project Description" name="projectDescription"></li>
+            </ul>
+
+
+        </form>
+
+
+    </dialog>
+
+    <div class="addTaskButton"><span id="addTask">T</span></div>
+
+    <dialog id="addTaskDialog">
+        <form name="addTaskForm">
+            
+
+
+        </form>
+
+
+    </dialog>
+    
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!-- Project Dialog CREATE --->
+<dialog id="addProjectDialog">
+    <form id="addProjectForm" method="dialog">
+        <h2>Create New Project</h2>
+        
+        <!-- Project Title -->
+        <label for="projectTitle">Project Title</label>
+        <input type="text" id="projectTitle" name="projectTitle" required>
+
+        <!-- Project Description -->
+        <label for="projectDescription">Project Description</label>
+        <textarea id="projectDescription" name="projectDescription" rows="4" required></textarea>
+        
+        <hr>
+
+        <!-- Tasks Section -->
+        <div id="tasksSection">
+            <h3>Tasks</h3>
+
+            <!-- Template for a Task -->
+            <div class="task-template" id="task-template">
+                <fieldset>
+                    <legend>Task <span class="task-number">1</span></legend>
+
+                    <!-- Task Title -->
+                    <label for="taskTitle-1">Task Title</label>
+                    <input type="text" id="taskTitle-1" name="taskTitle-1" required>
+
+                    <!-- Task Priority -->
+                    <label for="taskPriority-1">Priority</label>
+                    <select id="taskPriority-1" name="taskPriority-1" required>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <!-- Task Description -->
+                    <label for="taskDescription-1">Task Description</label>
+                    <textarea id="taskDescription-1" name="taskDescription-1" rows="3" required></textarea>
+
+                    <!-- Task Due Date -->
+                    <label for="taskDueDate-1">Task Due Date</label>
+                    <input type="date" id="taskDueDate-1" name="taskDueDate-1" required>
+
+                    <!-- Task ToDo's -->
+                    <label for="taskChecklist-1">ToDo's</label>
+                    <input type="text" id="taskChecklist-1" name="taskChecklist-1" placeholder="Separate items by comma" required>
+
+                    <!-- Delete Task Button -->
+                    <button type="button" class="deleteTaskButton">Delete Task</button>
+                </fieldset>
+            </div>
+            <!-- End of Task Template -->
+
+            <!-- Add Task Button -->
+            <button type="button" id="addTaskButton">Add Task</button>
+        </div>
+        <!-- End of Tasks Section -->
+
+        <hr>
+
+        <!-- Form Submit Buttons -->
+        <div class="form-buttons">
+            <button type="submit" id="addProjectSubmit">Create Project</button>
+            <button type="button" id="cancelProjectSubmit">Cancel</button>
+        </div>
+    </form>
+</dialog>

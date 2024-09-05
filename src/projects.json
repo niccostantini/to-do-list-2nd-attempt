@@ -1,0 +1,79 @@
+[
+    {
+      "title": "Website Redesign",
+      "description": "Redesign the company website",
+      "tasks": [
+        {
+          "title": "Create wireframes",
+          "dueDate": "2024-09-10",
+          "priority": "High",
+          "description": "Wireframes for the new design",
+          "checklist": [
+            {
+              "label": "Sketch homepage",
+              "status": false
+            },
+            {
+              "label": "Find images",
+              "status": true
+            }
+          ]
+        },
+        {
+          "title": "Develop frontend",
+          "dueDate": "2024-10-01",
+          "priority": "Medium",
+          "description": "Develop the frontend using React",
+          "checklist": [
+            {
+              "label": "HTML/CSS",
+              "status": false
+            },
+            {
+              "label": "JAVASCRIPT",
+              "status": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mobile App",
+      "description": "Develop a mobile app for iOS and Android",
+      "tasks": [
+        {
+          "title": "Design UI",
+          "dueDate": "2024-11-01",
+          "priority": "High",
+          "description": "Design the user interface",
+          "checklist": [
+            {
+              "label": "Main Screen",
+              "status": false
+            },
+            {
+              "label": "Settings Screen",
+              "status": true
+            }
+          ]
+        },
+        {
+          "title": "Implement API",
+          "dueDate": "2024-12-01",
+          "priority": "Low",
+          "description": "Integrate with the backend API",
+          "checklist": [
+            {
+              "label": "Login endpoint",
+              "status": false
+            },
+            {
+              "label": "User data endpoint",
+              "status": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
